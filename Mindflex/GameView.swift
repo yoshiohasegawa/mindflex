@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct GameView: View {
     
     
     // Properties
@@ -20,14 +20,14 @@ struct ContentView: View {
     // Keeps track of the user score
     @State var score = 0
     // Bool to highlight the score when increased
-    @State var scoreHighlight = Color("AccentColor")
+    @State var scoreHighlight = Color("SecondaryColor")
     // Helper properties for appending new Question object
     // when data array runs out of questions
     @State var answer = true
     @State var question = ""
     // Bool to identify if game has started
-    @State var begin = false
-    // Timer
+    @State var start = false
+    // Timer reference to start & restart
     @State var timer: Timer? = nil
     // ProgressView value
     @State var progressValue = 0.0
@@ -38,7 +38,6 @@ struct ContentView: View {
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true){
             (timer) in progressValue += 0.1
-            print(progressValue)
             if progressValue > 0.9 {
                 timer.invalidate()
                 gameOver = true
@@ -55,21 +54,23 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             // Background
-            Image("Background")
-                .resizable()
-                .scaledToFill()
+            Rectangle()
+                .foregroundColor(Color("SecondaryColor"))
                 .edgesIgnoringSafeArea(.all)
-                .offset(x: -550.0, y: 0.0)
+            RoundedRectangle(cornerRadius: 40, style: .continuous)
+                .foregroundColor(Color("BackgroundColor"))
+                .edgesIgnoringSafeArea(.all)
+                .padding(.horizontal, 5.0)
             
             // Main Container
             VStack() {
                 // Logo & user score tracker
                 VStack() {
                     Image("Logo")
-                        .padding(.bottom, 12.0)
+                        .padding()
                     HStack(alignment: .center) {
                         Text("Score: ")
-                            .font(.headline)
+                            .font(.title3)
                             .foregroundColor(.white)
                             
                         Text(String(score))
@@ -77,12 +78,12 @@ struct ContentView: View {
                             .foregroundColor(.white)
                     }
                     .padding(.horizontal, 12.0)
-                    .background(scoreHighlight.blur(radius: 30))
+                    .background(scoreHighlight.blur(radius: 20))
                     
                     // ProgressView timer for each question
-                    if begin {
+                    if start {
                         ProgressView(value: progressValue)
-                            .accentColor(Color("AccentColor"))
+                            .accentColor(Color("SecondaryColor"))
                             .padding(.vertical, 12.0)
                             .frame(width: 300.0)
                     }
@@ -119,13 +120,13 @@ struct ContentView: View {
                             .font(.title)
                             .padding()
                     }
-                    
                 }
+                .padding()
             
                 Spacer()
                 
                 // Question asked to user
-                if begin && gameOver == false {
+                if start && gameOver == false {
                     Text(data.questions[idx].question)
                         .font(.largeTitle)
                         .fontWeight(.bold)
@@ -135,29 +136,20 @@ struct ContentView: View {
                 if gameOver {
                     Text("Thanks for playing!")
                         .font(.largeTitle)
-                        .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding()
                 } else {
-                    ZStack {
-                        Text(" ")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
-                            .foregroundColor(.white)
-                            .padding()
-                        Text("Get ready for your first question...")
-                            .font(.title2)
-                            .foregroundColor(.white)
-                            .padding()
-                    }
+                    Text("Get ready for your first question...")
+                        .font(.largeTitle)
+                        .foregroundColor(.white)
+                        .multilineTextAlignment(.center)
+                        .padding()
                 }
-                
-                    
                 
                 Spacer()
                 
                 // True & False buttons
-                if begin && gameOver == false {
+                if start && gameOver == false {
                     HStack() {
                         // True Button
                         Button(action: {
@@ -193,7 +185,7 @@ struct ContentView: View {
                                 progressValue = 0.0
                                 startTimer()
                             } else {
-                                scoreHighlight = Color("AccentColor")
+                                scoreHighlight = Color("SecondaryColor")
                                 gameOver = true
                                 // Set progressValue to full
                                 progressValue = 1.0
@@ -242,7 +234,7 @@ struct ContentView: View {
                                 progressValue = 0.0
                                 startTimer()
                             } else {
-                                scoreHighlight = Color("AccentColor")
+                                scoreHighlight = Color("SecondaryColor")
                                 gameOver = true
                                 // Set progressValue to full
                                 progressValue = 1.0
@@ -258,20 +250,21 @@ struct ContentView: View {
                     }
                 } else
                 if gameOver {
-                    // Begin Button
+                    // Start Button
                     Button(action: {
                         // Stop previous timer
                         stopTimer()
-                        // set begin to true
+                        // set start to true
                         // to start a NEW game
                         gameOver = false
-                        begin = true
+                        score = 0
+                        start = true
                         // Start new timer
                         progressValue = 0.0
                         startTimer()
                         
                     }, label: {
-                        Text("Begin New Game")
+                        Text("Start New Game")
                             .padding()
                             .foregroundColor(.white)
                             .overlay(
@@ -279,16 +272,16 @@ struct ContentView: View {
                                     .stroke(Color.white, lineWidth: 1))
                     })
                 } else {
-                    // Begin Button
+                    // Start Button
                     Button(action: {
-                        // set begin to true
+                        // set start to true
                         // to start the game
-                        begin = true
+                        start = true
                         // Start timer
                         startTimer()
                         
                     }, label: {
-                        Text("Begin")
+                        Text("Start")
                             .padding()
                             .foregroundColor(.white)
                             .overlay(
@@ -296,7 +289,6 @@ struct ContentView: View {
                                     .stroke(Color.white, lineWidth: 1))
                     })
                 }
-                
                 Spacer()
             }
         }
@@ -307,7 +299,7 @@ struct ContentView_Previews: PreviewProvider {
     
     // Properties
     static var previews: some View {
-        ContentView()
+        GameView()
             
     }
 }

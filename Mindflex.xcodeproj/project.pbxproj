@@ -8,9 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A401DCF026521C1200055DDA /* MindflexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A401DCEF26521C1200055DDA /* MindflexApp.swift */; };
-		A401DCF226521C1200055DDA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A401DCF126521C1200055DDA /* ContentView.swift */; };
+		A401DCF226521C1200055DDA /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A401DCF126521C1200055DDA /* GameView.swift */; };
 		A401DCF426521C1200055DDA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A401DCF326521C1200055DDA /* Assets.xcassets */; };
 		A401DCF726521C1200055DDA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A401DCF626521C1200055DDA /* Preview Assets.xcassets */; };
+		A44CE9712653B73A008005D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A44CE9702653B73A008005D9 /* README.md */; };
+		A44CE9732653CFCC008005D9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CE9722653CFCC008005D9 /* HomeView.swift */; };
 		A48BA7922652958C00A25B2D /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = A48BA7912652958C00A25B2D /* QuestionData.json */; };
 		A4CEE3B52652852B00406EB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B42652852B00406EB4 /* Question.swift */; };
 		A4CEE3B72652857900406EB4 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B62652857900406EB4 /* DataLoader.swift */; };
@@ -19,10 +21,12 @@
 /* Begin PBXFileReference section */
 		A401DCEC26521C1200055DDA /* Mindflex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mindflex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A401DCEF26521C1200055DDA /* MindflexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MindflexApp.swift; sourceTree = "<group>"; };
-		A401DCF126521C1200055DDA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A401DCF126521C1200055DDA /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		A401DCF326521C1200055DDA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A401DCF626521C1200055DDA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		A401DCF826521C1200055DDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A44CE9702653B73A008005D9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		A44CE9722653CFCC008005D9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A48BA7912652958C00A25B2D /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 		A4CEE3B42652852B00406EB4 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A4CEE3B62652857900406EB4 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
@@ -42,6 +46,7 @@
 		A401DCE326521C1200055DDA = {
 			isa = PBXGroup;
 			children = (
+				A44CE9702653B73A008005D9 /* README.md */,
 				A401DCEE26521C1200055DDA /* Mindflex */,
 				A401DCED26521C1200055DDA /* Products */,
 			);
@@ -59,7 +64,8 @@
 			isa = PBXGroup;
 			children = (
 				A401DCEF26521C1200055DDA /* MindflexApp.swift */,
-				A401DCF126521C1200055DDA /* ContentView.swift */,
+				A44CE9722653CFCC008005D9 /* HomeView.swift */,
+				A401DCF126521C1200055DDA /* GameView.swift */,
 				A4CEE3B62652857900406EB4 /* DataLoader.swift */,
 				A4CEE3B0265284B400406EB4 /* Models */,
 				A48BA7972653B20D00A25B2D /* Resources */,
@@ -153,6 +159,7 @@
 			files = (
 				A401DCF726521C1200055DDA /* Preview Assets.xcassets in Resources */,
 				A401DCF426521C1200055DDA /* Assets.xcassets in Resources */,
+				A44CE9712653B73A008005D9 /* README.md in Resources */,
 				A48BA7922652958C00A25B2D /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,7 +173,8 @@
 			files = (
 				A4CEE3B72652857900406EB4 /* DataLoader.swift in Sources */,
 				A4CEE3B52652852B00406EB4 /* Question.swift in Sources */,
-				A401DCF226521C1200055DDA /* ContentView.swift in Sources */,
+				A401DCF226521C1200055DDA /* GameView.swift in Sources */,
+				A44CE9732653CFCC008005D9 /* HomeView.swift in Sources */,
 				A401DCF026521C1200055DDA /* MindflexApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

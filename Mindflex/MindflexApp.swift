@@ -13,7 +13,7 @@ struct MindflexApp: App {
     // Properties
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
         }
     }
 }

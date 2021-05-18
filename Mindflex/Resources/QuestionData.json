@@ -1,0 +1,14 @@
+[
+	{
+		"question": "3 < 9",
+		"answer": true
+	},
+	{
+		"question": "24 < 12",
+		"answer": false
+	},
+	{
+		"question": "66 > 99",
+		"answer": false
+	}
+]

@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct MindflexApp: App {
+    
+    // Properties
     var body: some Scene {
         WindowGroup {
             ContentView()

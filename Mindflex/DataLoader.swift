@@ -16,14 +16,18 @@ public class DataLoader: ObservableObject {
     }
     
     func load() {
+        // Mindflex/Resources/QuestionData.json
         if let fileLocation = Bundle.main.url(
             forResource: "QuestionData",
             withExtension: "json"
         ) {
             // do catch in case of error
             do {
+                // Get data
                 let data = try Data(contentsOf: fileLocation)
+                // Parse JSON
                 let jsonDecoder = JSONDecoder()
+                // Decode at array of Question objects
                 let parsedData = try jsonDecoder.decode(
                     [Question].self,
                     from: data

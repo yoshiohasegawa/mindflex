@@ -14,7 +14,7 @@ struct GameView: View {
     
     // DataLoader is an array containing objects of type Question
     // Qeuestion contains: [question: String, answer: Bool]
-    @ObservedObject var data = DataLoader()
+    @State var data: DataLoader = DataLoader()
     // Indexer increases with every user response
     @State var idx = 0
     // Keeps track of the user score
@@ -35,11 +35,21 @@ struct GameView: View {
     @State var gameOver = false
     
     // Methods
+    func resetData() {
+        idx = 0
+        data = DataLoader()
+    }
+    
     func startTimer() {
+        // 3 second timer
         timer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: true){
             (timer) in progressValue += 0.1
+            // If time runs out
             if progressValue > 0.9 {
                 timer.invalidate()
+                // Reset Question data
+                resetData()
+                // Game over!
                 gameOver = true
             }
         }
@@ -184,8 +194,12 @@ struct GameView: View {
                                 // Start new timer
                                 progressValue = 0.0
                                 startTimer()
+                            // Game over
                             } else {
                                 scoreHighlight = Color("SecondaryColor")
+                                // Reset Question data
+                                resetData()
+                                // Game over!
                                 gameOver = true
                                 // Set progressValue to full
                                 progressValue = 1.0
@@ -233,8 +247,12 @@ struct GameView: View {
                                 // Start new timer
                                 progressValue = 0.0
                                 startTimer()
+                            // Game over
                             } else {
                                 scoreHighlight = Color("SecondaryColor")
+                                // Reset Question data
+                                resetData()
+                                // Game over!
                                 gameOver = true
                                 // Set progressValue to full
                                 progressValue = 1.0

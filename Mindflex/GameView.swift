@@ -9,7 +9,6 @@ import SwiftUI
 
 struct GameView: View {
     
-    
     // Properties
     
     // DataLoader is an array containing objects of type Question
@@ -37,6 +36,9 @@ struct GameView: View {
     // Methods
     func resetData() {
         idx = 0
+        // TODO: Find another solution for resetting data,
+        // since re-instantiating DataLoader() will make
+        // additional API calls
         data = DataLoader()
     }
     
@@ -62,6 +64,9 @@ struct GameView: View {
     
     
     var body: some View {
+        NavigationView {
+            
+
         ZStack {
             // Background
             Rectangle()
@@ -137,7 +142,7 @@ struct GameView: View {
                 
                 // Question asked to user
                 if start && gameOver == false {
-                    Text(data.questions[idx].question)
+                    Text(data.questionList.data[idx].question)
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
@@ -167,7 +172,7 @@ struct GameView: View {
                             stopTimer()
                             
                             // Update score if correct
-                            if data.questions[idx].answer == true {
+                            if data.questionList.data[idx].answer == true {
                                 scoreHighlight = Color.green
                                 score += 1
                                 
@@ -175,7 +180,7 @@ struct GameView: View {
                                 idx += 1
                                 
                                 // Update question/answer if data array ran out of questions
-                                if idx >= Int(data.questions.count) {
+                                if idx >= Int(data.questionList.data.count) {
                                     // Generate 2 random numbers
                                     let randNum1 = Int.random(in: 0...100)
                                     let randNum2 = Int.random(in: 0...100)
@@ -183,12 +188,12 @@ struct GameView: View {
                                     if idx % 2 == 0 {
                                         answer = randNum1 < randNum2
                                         question = String(randNum1) + " < " + String(randNum2)
-                                        data.append(Question(question: question, answer: answer))
+                                        data.append(Question(_id: "rand", question: question, answer: answer))
                                     // Odd index => append new "greater than" Question to data array
                                     } else {
                                         answer = randNum1 > randNum2
                                         question = String(randNum1) + " > " + String(randNum2)
-                                        data.append(Question(question: question, answer: answer))
+                                        data.append(Question(_id: "rand", question: question, answer: answer))
                                     }
                                 }
                                 // Start new timer
@@ -221,14 +226,14 @@ struct GameView: View {
                             // Stop previous timer
                             stopTimer()
                             // Update score if correct
-                            if data.questions[idx].answer == false {
+                            if data.questionList.data[idx].answer == false {
                                 scoreHighlight = Color.green
                                 score += 1
                                 // Increment data indexer
                                 idx += 1
 
                                 // Update question/answer if data array ran out of questions
-                                if idx >= Int(data.questions.count) {
+                                if idx >= Int(data.questionList.data.count) {
                                     // Generate 2 random numbers
                                     let randNum1 = Int.random(in: 0...100)
                                     let randNum2 = Int.random(in: 0...100)
@@ -236,12 +241,12 @@ struct GameView: View {
                                     if idx % 2 == 0 {
                                         answer = randNum1 < randNum2
                                         question = String(randNum1) + " < " + String(randNum2)
-                                        data.append(Question(question: question, answer: answer))
+                                        data.append(Question(_id: "rand", question: question, answer: answer))
                                     // Odd index => append new "greater than" Question to data array
                                     } else {
                                         answer = randNum1 > randNum2
                                         question = String(randNum1) + " > " + String(randNum2)
-                                        data.append(Question(question: question, answer: answer))
+                                        data.append(Question(_id: "rand", question: question, answer: answer))
                                     }
                                 }
                                 // Start new timer
@@ -268,27 +273,50 @@ struct GameView: View {
                     }
                 } else
                 if gameOver {
-                    // Start Button
-                    Button(action: {
-                        // Stop previous timer
-                        stopTimer()
-                        // set start to true
-                        // to start a NEW game
-                        gameOver = false
-                        score = 0
-                        start = true
-                        // Start new timer
-                        progressValue = 0.0
-                        startTimer()
+                    VStack {
+                        // Start Button
+                        Button(action: {
+                            // Stop previous timer
+                            stopTimer()
+                            // set start to true
+                            // to start a NEW game
+                            gameOver = false
+                            score = 0
+                            start = true
+                            // Start new timer
+                            progressValue = 0.0
+                            startTimer()
+                            
+                        }, label: {
+                            VStack {
+                                Spacer()
+                                
+                                Text("Start New Game")
+                                    .padding()
+                                    .foregroundColor(.white)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color.white, lineWidth: 1))
+                            }
+                        })
                         
-                    }, label: {
-                        Text("Start New Game")
-                            .padding()
-                            .foregroundColor(.white)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 15)
-                                    .stroke(Color.white, lineWidth: 1))
-                    })
+                        // Home Button
+                        NavigationLink(
+                            destination: HomeView()
+                                .navigationBarHidden(true),
+                            label: {
+                                Text("Home")
+                                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                                    .padding()
+                                    .foregroundColor(Color("SecondaryColor"))
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 15)
+                                            .stroke(Color("SecondaryColor"), lineWidth: 1))
+                            })
+                            .padding(.top, 15)
+                    }
+                    
+                    
                 } else {
                     // Start Button
                     Button(action: {
@@ -309,6 +337,7 @@ struct GameView: View {
                 }
                 Spacer()
             }
+        }
         }
     }
 }

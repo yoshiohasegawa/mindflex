@@ -8,6 +8,7 @@
 import Foundation
 
 struct Question: Codable {
+    var _id: String
     var question: String
     var answer: Bool
 }

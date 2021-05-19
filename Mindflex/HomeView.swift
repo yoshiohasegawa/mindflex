@@ -39,12 +39,14 @@ struct HomeView: View {
                 VStack() {
                     Image("Logo")
                     
+                    // Title
                     Text("Welcome to\nMindflex")
                         .font(.largeTitle)
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
                     
+                    // Begin Button
                     NavigationLink(
                         destination: GameView()
                             .navigationBarHidden(true),

@@ -27,7 +27,7 @@ public class DataLoader: ObservableObject {
 
         // Guarding URL creation
         guard mindflexApiUrl != nil else {
-            print("Error created URL object")
+            print("\nError created URL object")
             return
         }
 
@@ -59,7 +59,10 @@ public class DataLoader: ObservableObject {
                 }
             // Catch print error & set questionList to sample data stored locally
             } catch {
-                print("Error parsing response data from Mindflex server")
+                print("\nError parsing response data from Mindflex server")
+                
+                let resp = response as? HTTPURLResponse
+                print("Status code: " + String(resp!.statusCode) + "\nError: ")
                 print(error)
                 
                 // Mindflex/Resources/QuestionData.json
@@ -76,7 +79,7 @@ public class DataLoader: ObservableObject {
                         let parsedData = try decoder.decode(QuestionList.self, from: data)
                         self.questionList = parsedData
                     } catch {
-                        print("Error parsing data from local sample data storage")
+                        print("\nError parsing data from local sample data storage\nError: ")
                         print(error)
                     }
                 }

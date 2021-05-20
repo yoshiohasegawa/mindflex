@@ -301,6 +301,13 @@ struct GameView: View {
                             
                             // Home Button
                             NavigationLink(
+                                // POTENTIAL TODO: This code is read once gameOver = true,
+                                // I believe this triggers HomeView() to be compiled,
+                                // which triggers another instantiation of DataLoader(),
+                                // which makes an additional API call.
+                                // Think of a solution to eliminate this uneccessary API call.
+                                // we only want to make an API call to fetch question data
+                                // when the user visits the HomeView.
                                 destination: HomeView()
                                     .navigationBarHidden(true),
                                 label: {

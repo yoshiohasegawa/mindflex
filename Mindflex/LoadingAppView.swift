@@ -44,15 +44,13 @@ struct LoadingAppView: View {
                 if data.loadComplete {
                     // If so, move on to next View
                     loadingComplete = true
-                // Check if API call failed
-                } else
-                // If so, TODO: handle...
-                if data.loadingFailed {
-                    loadingFailed = true
-                    loadingComplete = true
-                // Else, reset timer TODO: handle...
+                // Else, if API call has not completed...
                 } else {
-                    resetTimer()
+                    // Reset timer
+                    // resetTimer() <- Commenting out for offline usability
+                    
+                    // TODO: Handle when API call fails
+                    loadingComplete = true
                 }
             }
         }

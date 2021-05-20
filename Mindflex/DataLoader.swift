@@ -13,7 +13,6 @@ public class DataLoader: ObservableObject {
     @Published var questionList: QuestionList = QuestionList(
         data: [Question(_id: "sample_1", question: "3 < 93", answer: true)])
     @Published var loadComplete = false
-    @Published var loadingFailed = false
     
     
     init() {
@@ -70,8 +69,6 @@ public class DataLoader: ObservableObject {
                 let resp = response as? HTTPURLResponse
                 print("Status code: " + String(resp!.statusCode) + "\nError: ")
                 print(error)
-                // TODO: Handle when API call fails...
-                self.loadingFailed = true
             }
         }
 

@@ -14,6 +14,7 @@
 		A44CE9712653B73A008005D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A44CE9702653B73A008005D9 /* README.md */; };
 		A44CE9732653CFCC008005D9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CE9722653CFCC008005D9 /* HomeView.swift */; };
 		A4877027265504C300E478E9 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4877026265504C300E478E9 /* QuestionList.swift */; };
+		A487702926563FD300E478E9 /* LoadingAppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A487702826563FD300E478E9 /* LoadingAppView.swift */; };
 		A4CEE3B52652852B00406EB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B42652852B00406EB4 /* Question.swift */; };
 		A4CEE3B72652857900406EB4 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B62652857900406EB4 /* DataLoader.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +29,7 @@
 		A44CE9702653B73A008005D9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A44CE9722653CFCC008005D9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A4877026265504C300E478E9 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
+		A487702826563FD300E478E9 /* LoadingAppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingAppView.swift; sourceTree = "<group>"; };
 		A4CEE3B42652852B00406EB4 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A4CEE3B62652857900406EB4 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,6 +66,7 @@
 			isa = PBXGroup;
 			children = (
 				A401DCEF26521C1200055DDA /* MindflexApp.swift */,
+				A487702826563FD300E478E9 /* LoadingAppView.swift */,
 				A44CE9722653CFCC008005D9 /* HomeView.swift */,
 				A401DCF126521C1200055DDA /* GameView.swift */,
 				A4CEE3B62652857900406EB4 /* DataLoader.swift */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4CEE3B72652857900406EB4 /* DataLoader.swift in Sources */,
+				A487702926563FD300E478E9 /* LoadingAppView.swift in Sources */,
 				A4CEE3B52652852B00406EB4 /* Question.swift in Sources */,
 				A401DCF226521C1200055DDA /* GameView.swift in Sources */,
 				A4877027265504C300E478E9 /* QuestionList.swift in Sources */,

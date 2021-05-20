@@ -12,15 +12,12 @@ struct HomeView: View {
     // Properties
     
     // DataLoader() is an object with property questionList.
-    // questionList is of type QuestionList() with property data.
-    // data is of type [Question]
-    // Question contains: [question: String, answer: Bool]
-    // ---
-    // Load the data on HomeView and pass it to GameView
-    // ---
-    // TODO: Handle when DataLoader() fails to fetch data via API...
-    // Loading page? Or, simply proceed with a default data variable?
-    @State var data: DataLoader = DataLoader()
+    //  - questionList is of type QuestionList() with property data.
+    //    - data is of type [Question]
+    //     - Question contains: [question: String, answer: Bool]
+    @State var data: DataLoader
+    
+    // Methods
     
     
     var body: some View {
@@ -62,7 +59,6 @@ struct HomeView: View {
                         .multilineTextAlignment(.center)
                         .padding(.bottom)
                     
-                    // Begin Button
                     NavigationLink(
                         destination: GameView(data: data)
                             .navigationBarHidden(true),
@@ -74,11 +70,12 @@ struct HomeView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(Color("SecondaryColor"), lineWidth: 1))
-                        }).simultaneousGesture(TapGesture().onEnded{
-                            // When the user selects "Begin",
-                            // randomize game data so the user cannot anticipate questions
-                            data.randomizeData()
                         })
+                }
+                .onAppear() {
+                    // When the view appears,
+                    // randomize game data so the user cannot anticipate questions
+                     data.randomizeData()
                 }
                 .padding(.bottom, 100)
             }
@@ -89,8 +86,7 @@ struct HomeView: View {
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            HomeView()
-                
+            HomeView(data: DataLoader())
         }
     }
 }

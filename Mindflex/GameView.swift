@@ -12,13 +12,9 @@ struct GameView: View {
     // Properties
     
     // DataLoader() is an object with property questionList.
-    // questionList is of type QuestionList() with property data.
-    // data is of type [Question]
-    // Question contains: [question: String, answer: Bool]
-    // ---
-    // TODO: Handle the case when data: DataLoader
-    // fails to fetch data via API...
-    // Loading page? Or, simply proceed with a default data variable?
+    //  - questionList is of type QuestionList() with property data.
+    //    - data is of type [Question]
+    //     - Question contains: [question: String, answer: Bool]
     @State var data: DataLoader
     // Indexer increases with every user response
     @State var idx = 0
@@ -312,7 +308,7 @@ struct GameView: View {
                                 // Think of a solution to eliminate this uneccessary API call.
                                 // we only want to make an API call to fetch question data
                                 // when the user visits the HomeView.
-                                destination: HomeView()
+                                destination: HomeView(data: data)
                                     .navigationBarHidden(true),
                                 label: {
                                     Text("Home")
@@ -357,6 +353,5 @@ struct ContentView_Previews: PreviewProvider {
     // Properties
     static var previews: some View {
         GameView(data: DataLoader())
-            
     }
 }

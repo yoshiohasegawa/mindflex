@@ -12,6 +12,8 @@ public class DataLoader: ObservableObject {
     // Initialize questionList so its self can be accessed in load()
     @Published var questionList: QuestionList = QuestionList(
         data: [Question(_id: "sample_1", question: "3 < 93", answer: true)])
+    @Published var loadComplete = false
+    
     
     init() {
         // Get all question data upon initialization
@@ -61,6 +63,8 @@ public class DataLoader: ObservableObject {
                     let decoder = JSONDecoder()
                     self.questionList = try decoder.decode(QuestionList.self, from: data!)
                     print("Data fetched from Mindflex server...")
+                    // Attempted Data fetch complete: true
+                    self.loadComplete = true
                 }
             // Catch print error & set questionList to sample data stored locally
             } catch {
@@ -69,6 +73,7 @@ public class DataLoader: ObservableObject {
                 let resp = response as? HTTPURLResponse
                 print("Status code: " + String(resp!.statusCode) + "\nError: ")
                 print(error)
+                // TODO: Handle when API call fails...
             }
         }
 

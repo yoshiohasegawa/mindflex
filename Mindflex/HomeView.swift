@@ -8,7 +8,20 @@
 import SwiftUI
 
 struct HomeView: View {
+    
+    // Properties
+    
+    // DataLoader() is an object with property questionList.
+    // questionList is of type QuestionList() with property data.
+    // data is of type [Question]
+    // Question contains: [question: String, answer: Bool]
+    // ---
+    // Load the data on HomeView and pass it to GameView
+    @State var data: DataLoader = DataLoader()
+    
+    
     var body: some View {
+        
         NavigationView {
             ZStack {
                 //Background
@@ -48,7 +61,7 @@ struct HomeView: View {
                     
                     // Begin Button
                     NavigationLink(
-                        destination: GameView()
+                        destination: GameView(data: data)
                             .navigationBarHidden(true),
                         label: {
                             Text("Begin")
@@ -58,6 +71,10 @@ struct HomeView: View {
                                 .overlay(
                                     RoundedRectangle(cornerRadius: 15)
                                         .stroke(Color("SecondaryColor"), lineWidth: 1))
+                        }).simultaneousGesture(TapGesture().onEnded{
+                            // When the user selects "Begin",
+                            // randomize game data so the user cannot anticipate questions
+                            data.randomizeData()
                         })
                 }
                 .padding(.bottom, 100)

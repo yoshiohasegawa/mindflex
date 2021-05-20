@@ -11,11 +11,15 @@ public class DataLoader: ObservableObject {
     
     // Initialize questionList so its self can be accessed in load()
     @Published var questionList: QuestionList = QuestionList(
-        data: [Question(_id: "", question: "", answer: true)])
+        data: [Question(_id: "", question: "", answer: false)])
     
     init() {
         // Get all question data upon initialization
         load()
+        // Make load() an async/await function so that
+        // we can randomize data after it is loaded everytime.
+        // Like this...
+        // questionList.randomizeList()
     }
     
     // Get all question data from backend server
@@ -56,6 +60,7 @@ public class DataLoader: ObservableObject {
                     // Parse JSON
                     let decoder = JSONDecoder()
                     self.questionList = try decoder.decode(QuestionList.self, from: data!)
+                    print("Data fetched from Mindflex server...")
                 }
             // Catch print error & set questionList to sample data stored locally
             } catch {
@@ -77,6 +82,7 @@ public class DataLoader: ObservableObject {
                         // Parse JSON
                         let decoder = JSONDecoder()
                         let parsedData = try decoder.decode(QuestionList.self, from: data)
+                        print("Data fetched from JSON file...")
                         self.questionList = parsedData
                     } catch {
                         print("\nError parsing data from local sample data storage\nError: ")
@@ -93,5 +99,10 @@ public class DataLoader: ObservableObject {
     // Call the QuestionList append() mutating function
     func append(_ question: Question) {
         questionList.append(question)
+    }
+    
+    // Call the QuestionList randomizeList() mutating function
+    func randomizeData() {
+        questionList.randomizeList()
     }
 }

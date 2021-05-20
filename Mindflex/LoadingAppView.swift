@@ -17,6 +17,7 @@ struct LoadingAppView: View {
     //     - Question contains: [question: String, answer: Bool]
     @State var data: DataLoader
     @State var loadingComplete = false
+    @State var loadingFailed = false
     @State var timer: Timer? = nil
     @State var dotsString = ""
     @State var seconds = 0 {
@@ -39,8 +40,17 @@ struct LoadingAppView: View {
             // If time runs out
             if seconds > 3 {
                 timer.invalidate()
+                // Check if API call is complete
                 if data.loadComplete {
+                    // If so, move on to next View
                     loadingComplete = true
+                // Check if API call failed
+                } else
+                // If so, TODO: handle...
+                if data.loadingFailed {
+                    loadingFailed = true
+                    loadingComplete = true
+                // Else, reset timer TODO: handle...
                 } else {
                     resetTimer()
                 }
@@ -119,7 +129,7 @@ struct LoadingAppView: View {
                     NavigationLink(
                         destination: HomeView(data: data)
                             .navigationBarHidden(true),
-                        isActive: $loadingComplete) {
+                        isActive: $loadingComplete ) {
                         EmptyView()
                     }
                 }

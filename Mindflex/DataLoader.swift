@@ -13,15 +13,12 @@ public class DataLoader: ObservableObject {
     @Published var questionList: QuestionList = QuestionList(
         data: [Question(_id: "sample_1", question: "3 < 93", answer: true)])
     @Published var loadComplete = false
+    @Published var loadingFailed = false
     
     
     init() {
         // Get all question data upon initialization
         load()
-        // Make load() an async/await function so that
-        // we can randomize data after it is loaded everytime.
-        // Like this...
-        // questionList.randomizeList()
     }
     
     // Get all question data from backend server
@@ -74,6 +71,7 @@ public class DataLoader: ObservableObject {
                 print("Status code: " + String(resp!.statusCode) + "\nError: ")
                 print(error)
                 // TODO: Handle when API call fails...
+                self.loadingFailed = true
             }
         }
 

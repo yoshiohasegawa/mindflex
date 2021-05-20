@@ -17,6 +17,9 @@ struct HomeView: View {
     // Question contains: [question: String, answer: Bool]
     // ---
     // Load the data on HomeView and pass it to GameView
+    // ---
+    // TODO: Handle when DataLoader() fails to fetch data via API...
+    // Loading page? Or, simply proceed with a default data variable?
     @State var data: DataLoader = DataLoader()
     
     

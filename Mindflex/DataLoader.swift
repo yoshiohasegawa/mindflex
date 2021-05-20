@@ -11,7 +11,7 @@ public class DataLoader: ObservableObject {
     
     // Initialize questionList so its self can be accessed in load()
     @Published var questionList: QuestionList = QuestionList(
-        data: [Question(_id: "", question: "", answer: false)])
+        data: [Question(_id: "sample_1", question: "3 < 93", answer: true)])
     
     init() {
         // Get all question data upon initialization
@@ -69,26 +69,6 @@ public class DataLoader: ObservableObject {
                 let resp = response as? HTTPURLResponse
                 print("Status code: " + String(resp!.statusCode) + "\nError: ")
                 print(error)
-                
-                // Mindflex/Resources/QuestionData.json
-                if let fileLocation = Bundle.main.url(
-                    forResource: "QuestionData",
-                    withExtension: "json"
-                ) {
-                    // Try to decode data with QuestionList struct object
-                    do {
-                        // Get data from fileLocation
-                        let data = try Data(contentsOf: fileLocation)
-                        // Parse JSON
-                        let decoder = JSONDecoder()
-                        let parsedData = try decoder.decode(QuestionList.self, from: data)
-                        print("Data fetched from JSON file...")
-                        self.questionList = parsedData
-                    } catch {
-                        print("\nError parsing data from local sample data storage\nError: ")
-                        print(error)
-                    }
-                }
             }
         }
 

@@ -14,7 +14,6 @@
 		A44CE9712653B73A008005D9 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = A44CE9702653B73A008005D9 /* README.md */; };
 		A44CE9732653CFCC008005D9 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A44CE9722653CFCC008005D9 /* HomeView.swift */; };
 		A4877027265504C300E478E9 /* QuestionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4877026265504C300E478E9 /* QuestionList.swift */; };
-		A48BA7922652958C00A25B2D /* QuestionData.json in Resources */ = {isa = PBXBuildFile; fileRef = A48BA7912652958C00A25B2D /* QuestionData.json */; };
 		A4CEE3B52652852B00406EB4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B42652852B00406EB4 /* Question.swift */; };
 		A4CEE3B72652857900406EB4 /* DataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4CEE3B62652857900406EB4 /* DataLoader.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +28,6 @@
 		A44CE9702653B73A008005D9 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		A44CE9722653CFCC008005D9 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A4877026265504C300E478E9 /* QuestionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionList.swift; sourceTree = "<group>"; };
-		A48BA7912652958C00A25B2D /* QuestionData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = QuestionData.json; sourceTree = "<group>"; };
 		A4CEE3B42652852B00406EB4 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		A4CEE3B62652857900406EB4 /* DataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -70,7 +68,6 @@
 				A401DCF126521C1200055DDA /* GameView.swift */,
 				A4CEE3B62652857900406EB4 /* DataLoader.swift */,
 				A4CEE3B0265284B400406EB4 /* Models */,
-				A48BA7972653B20D00A25B2D /* Resources */,
 				A401DCF326521C1200055DDA /* Assets.xcassets */,
 				A401DCF826521C1200055DDA /* Info.plist */,
 				A401DCF526521C1200055DDA /* Preview Content */,
@@ -84,14 +81,6 @@
 				A401DCF626521C1200055DDA /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		A48BA7972653B20D00A25B2D /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				A48BA7912652958C00A25B2D /* QuestionData.json */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		A4CEE3B0265284B400406EB4 /* Models */ = {
@@ -163,7 +152,6 @@
 				A401DCF726521C1200055DDA /* Preview Assets.xcassets in Resources */,
 				A401DCF426521C1200055DDA /* Assets.xcassets in Resources */,
 				A44CE9712653B73A008005D9 /* README.md in Resources */,
-				A48BA7922652958C00A25B2D /* QuestionData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

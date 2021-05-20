@@ -15,6 +15,10 @@ struct GameView: View {
     // questionList is of type QuestionList() with property data.
     // data is of type [Question]
     // Question contains: [question: String, answer: Bool]
+    // ---
+    // TODO: Handle the case when data: DataLoader
+    // fails to fetch data via API...
+    // Loading page? Or, simply proceed with a default data variable?
     @State var data: DataLoader
     // Indexer increases with every user response
     @State var idx = 0

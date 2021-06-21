@@ -25,7 +25,7 @@
     * [User Accounts](#user-accounts)
     * [Game Modes](#game-modes)
     * [Sound Effects](#sound-effects)
-4. [Contact](#contact)
+3. [Contact](#contact)
 
 # About
 Mindflex is an iOS game application built with Swift. It is a simple and fun reflex quiz game that challenges your mind. The user is presented with random arithmetic questions and, they must answer the question correctly in under 3 seconds.

@@ -31,7 +31,7 @@
 Mindflex is an iOS game application built with Swift. It is a simple and fun reflex quiz game that challenges your mind. The user is presented with random arithmetic questions and, they must answer the question correctly in under 3 seconds.
 
 ## Back-End
-This game is supported by a backend server hosted on a cloud machine that provides endpoints and routes for question data. The server is built with Python and Flask. The database is a noSQL MongoDB database. When the application starts, an API request is made during the loading page which responds with question data that supports gameplay. Once the request has been fulfilled, the application continues to the Welcome screen.
+This game is supported by a backend server ([mindflex-server](https://github.com/yoshiohasegawa/mindflex-server)) hosted on a cloud machine that provides endpoints and routes for question data. The server is built with Python and Flask. The database is a noSQL MongoDB database. When the application starts, an API request is made during the loading page which responds with question data that supports gameplay. Once the request has been fulfilled, the application continues to the Welcome screen.
 
 ## Tech Stack
 - [Swift](https://swift.org/)

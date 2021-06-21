@@ -9,7 +9,8 @@ import Foundation
 
 public class DataLoader: ObservableObject {
     
-    // Initialize questionList so its self can be accessed in load()
+    // Initialize & assign questionList with a value,
+    // so its self can be accessed in load()
     @Published var questionList: QuestionList = QuestionList(
         data: [Question(_id: "sample_1", question: "3 < 93", answer: true)])
     @Published var loadComplete = false
